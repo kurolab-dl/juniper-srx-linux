@@ -165,6 +165,7 @@ use warnings;
     {
       #my $addr = $self->{addr} . "dynamic-vpn/setupApplet.php";
       my $addr = $self->{addr} . "dynamic-vpn/client/login";
+      $ua->ssl_opts(verify_hostname => 0, SSL_verify_mode => 0x00);
       my $req = $self->_auth_request($addr);
       $self->_debug_print(">>", "POST $addr", $ua->default_headers->as_string, $req->headers->as_string, '', $req->content);
       my $res = $ua->request($req);
